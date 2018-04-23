@@ -67,9 +67,10 @@
             // 
             // buttonGetFile
             // 
+            this.buttonGetFile.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonGetFile.Location = new System.Drawing.Point(3, 3);
             this.buttonGetFile.Name = "buttonGetFile";
-            this.buttonGetFile.Size = new System.Drawing.Size(204, 34);
+            this.buttonGetFile.Size = new System.Drawing.Size(257, 34);
             this.buttonGetFile.TabIndex = 0;
             this.buttonGetFile.Text = "Wybierz plik";
             this.buttonGetFile.UseVisualStyleBackColor = true;

@@ -43,7 +43,7 @@ namespace Zadanie_2
                         for (int j = 1; j <= colCount; j++)
                         {
                             if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
-                                line.Add(xlRange.Cells[i, j].Value2.ToString().TrimEnd());
+                                line.Add(xlRange.Cells[i, j].Value2.ToString().Trim());
                         }
                         var ret = !headers.Except(line).Any();
                         Console.WriteLine(ret);
@@ -64,7 +64,7 @@ namespace Zadanie_2
                     Marshal.ReleaseComObject(xlWorksheet);
 
                     //close and release
-                    xlWorkbook.Close();
+                    xlWorkbook.Close(false);
                     Marshal.ReleaseComObject(xlWorkbook);
 
                     //quit and release

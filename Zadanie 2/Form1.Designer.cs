@@ -32,9 +32,7 @@
             this.textBoxXlsxOutput = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonGetFile = new System.Windows.Forms.Button();
-            this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel1.SuspendLayout();
-            this.tableLayoutPanel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // openFileDialog
@@ -44,31 +42,31 @@
             // textBoxXlsxOutput
             // 
             this.textBoxXlsxOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxXlsxOutput.Location = new System.Drawing.Point(3, 3);
+            this.textBoxXlsxOutput.Location = new System.Drawing.Point(266, 3);
             this.textBoxXlsxOutput.Multiline = true;
             this.textBoxXlsxOutput.Name = "textBoxXlsxOutput";
-            this.textBoxXlsxOutput.Size = new System.Drawing.Size(415, 320);
+            this.textBoxXlsxOutput.Size = new System.Drawing.Size(257, 351);
             this.textBoxXlsxOutput.TabIndex = 1;
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.AutoSize = true;
-            this.tableLayoutPanel1.ColumnCount = 1;
+            this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel1.Controls.Add(this.buttonGetFile, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.textBoxXlsxOutput, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 43);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 15);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.85507F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.14493F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(421, 326);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(526, 357);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // buttonGetFile
             // 
-            this.buttonGetFile.Dock = System.Windows.Forms.DockStyle.Fill;
             this.buttonGetFile.Location = new System.Drawing.Point(3, 3);
             this.buttonGetFile.Name = "buttonGetFile";
             this.buttonGetFile.Size = new System.Drawing.Size(204, 34);
@@ -77,35 +75,17 @@
             this.buttonGetFile.UseVisualStyleBackColor = true;
             this.buttonGetFile.Click += new System.EventHandler(this.buttonGetFile_Click);
             // 
-            // tableLayoutPanel2
-            // 
-            this.tableLayoutPanel2.ColumnCount = 2;
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Controls.Add(this.buttonGetFile, 0, 0);
-            this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 1;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(421, 40);
-            this.tableLayoutPanel2.TabIndex = 3;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(421, 369);
-            this.Controls.Add(this.tableLayoutPanel2);
+            this.ClientSize = new System.Drawing.Size(526, 372);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Form1";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            this.tableLayoutPanel2.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -114,7 +94,6 @@
         private System.Windows.Forms.TextBox textBoxXlsxOutput;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Button buttonGetFile;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
     }
 }
 

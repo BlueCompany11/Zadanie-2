@@ -35,19 +35,25 @@ namespace Zadanie_2
 
                     int rowCount = xlRange.Rows.Count;
                     int colCount = xlRange.Columns.Count;
-                    Console.WriteLine(rowCount.ToString()+" "+colCount.ToString());
+                    string[] headers = { "Nazwa" , "ID", "Cena", "Pozycja", "Poziom", "Opis", "Nr Zamówienia" };
+                    List<string> line=new List<string>();
                     for (int i = 1; i <= rowCount; i++)
                     {
+                        //textBoxXlsxOutput.AppendText(String.Join(String.Empty, line.ToArray()));
+                        textBoxXlsxOutput.AppendText(String.Join(" ", line.Where(s => !String.IsNullOrEmpty(s))));
+                        line.Clear();
                         for (int j = 1; j <= colCount; j++)
                         {
-                            //new line
-                            if (j == 1)
-                                Console.Write("\r\n");
+                            if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
+                                line.Add(xlRange.Cells[i, j].Value2.ToString());
+
+
 
                             //write the value to the console
-                            if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
-                                Console.Write(xlRange.Cells[i, j].Value2.ToString() + "\t");
+                            //if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
+                               // Console.Write(xlRange.Cells[i, j].Value2.ToString() + "\t");
                         }
+                        textBoxXlsxOutput.AppendText("\n");
                     }
 
                     //cleanup

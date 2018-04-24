@@ -42,10 +42,10 @@
             // textBoxXlsxOutput
             // 
             this.textBoxXlsxOutput.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxXlsxOutput.Location = new System.Drawing.Point(266, 3);
+            this.textBoxXlsxOutput.Location = new System.Drawing.Point(326, 3);
             this.textBoxXlsxOutput.Multiline = true;
             this.textBoxXlsxOutput.Name = "textBoxXlsxOutput";
-            this.textBoxXlsxOutput.Size = new System.Drawing.Size(257, 351);
+            this.textBoxXlsxOutput.Size = new System.Drawing.Size(317, 351);
             this.textBoxXlsxOutput.TabIndex = 1;
             // 
             // tableLayoutPanel1
@@ -57,12 +57,11 @@
             this.tableLayoutPanel1.Controls.Add(this.textBoxXlsxOutput, 1, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 15);
-            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.85507F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.14493F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(526, 357);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50.14006F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 49.85994F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(646, 357);
             this.tableLayoutPanel1.TabIndex = 2;
             // 
             // buttonGetFile
@@ -70,7 +69,7 @@
             this.buttonGetFile.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonGetFile.Location = new System.Drawing.Point(3, 3);
             this.buttonGetFile.Name = "buttonGetFile";
-            this.buttonGetFile.Size = new System.Drawing.Size(257, 34);
+            this.buttonGetFile.Size = new System.Drawing.Size(317, 34);
             this.buttonGetFile.TabIndex = 0;
             this.buttonGetFile.Text = "Wybierz plik";
             this.buttonGetFile.UseVisualStyleBackColor = true;
@@ -80,7 +79,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(526, 372);
+            this.ClientSize = new System.Drawing.Size(646, 372);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Name = "Form1";
             this.Text = "Form1";

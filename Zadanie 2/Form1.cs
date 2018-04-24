@@ -19,7 +19,7 @@ namespace Zadanie_2
         {
             InitializeComponent();
         }
-
+        //TODO: Tworzenie przez fabryke nowych konfiguracji do wyszukiwania
         private void buttonGetFile_Click(object sender, EventArgs e)
         {
             DialogResult result = openFileDialog.ShowDialog();
@@ -37,6 +37,7 @@ namespace Zadanie_2
                     int colCount = xlRange.Columns.Count;
                     string[] headers = { "Nazwa", "ID", "Cena", "Pozycja", "Poziom", "Opis", "Nr Zamówienia" };
                     List<string> line=new List<string>();
+                    var headersOrder = new List<(int Index, string Name)>();
                     for (int i = 1; i <= rowCount; i++)
                     {
                         line.Clear();
@@ -45,8 +46,21 @@ namespace Zadanie_2
                             if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
                                 line.Add(xlRange.Cells[i, j].Value2.ToString().Trim());
                         }
-                        var ret = !headers.Except(line).Any();
-                        Console.WriteLine(ret);
+                        bool headersLine = !headers.Except(line).Any();
+                        Console.WriteLine(headersLine);
+                        if (headersLine) //trzeba teraz stworzy strukutre na podstawie lini ktora jest headerem ->line
+                        {
+                            for (int k = 0; k < headers.Length; k++)
+                            {
+                                int index = line.FindIndex(x => x.StartsWith(headers[k]));
+                                headersOrder.Add((index,headers[k]));
+                                //Console.WriteLine(index);
+                            }
+                            for (int k = 0; k < headersOrder.Count; k++)
+                            {
+                                Console.WriteLine(headersOrder[k].Index.ToString() + " " +headersOrder[k].Name);
+                            }
+                        }
                         textBoxXlsxOutput.AppendText(String.Join(" ", line.Where(s => !String.IsNullOrEmpty(s))));
                         textBoxXlsxOutput.AppendText("\n");
                     }

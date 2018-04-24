@@ -8,6 +8,11 @@ namespace Zadanie_2
 {
     public class ExclusivePattern
     {
+        private List<string> headers;
 
+        public ExclusivePattern(List<string> headers)
+        {
+            this.headers = headers;
+        }
     }
 }

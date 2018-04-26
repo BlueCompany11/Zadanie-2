@@ -35,7 +35,8 @@ namespace Zadanie_2
 
                     int rowCount = xlRange.Rows.Count;
                     int colCount = xlRange.Columns.Count;
-                    string[] headers = { "Nazwa", "ID", "Cena", "Pozycja", "Poziom", "Opis", "Nr Zamówienia" };
+                    //string[] headers = { "Nazwa", "ID", "Cena", "Pozycja", "Poziom", "Opis", "Nr Zamówienia" };
+                    List<string> headers = new List<string>() { "Nazwa", "ID", "Cena", "Pozycja", "Poziom", "Opis", "Nr Zamówienia" };
                     List<string> line=new List<string>();
                     var headersOrder = new List<(int Index, string Name)>();
                     for (int i = 1; i <= rowCount; i++)
@@ -50,7 +51,7 @@ namespace Zadanie_2
                         Console.WriteLine(headersLine);
                         if (headersLine) //trzeba teraz stworzy strukutre na podstawie lini ktora jest headerem ->line
                         {
-                            for (int k = 0; k < headers.Length; k++)
+                            for (int k = 0; k < headers.Count; k++)
                             {
                                 int index = line.FindIndex(x => x.StartsWith(headers[k]));
                                 headersOrder.Add((index,headers[k]));

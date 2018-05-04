@@ -86,7 +86,7 @@ namespace Zadanie_2
                     xlApp.Quit();
                     Marshal.ReleaseComObject(xlApp);
                 }
-                catch (IOException)
+                catch (COMException)
                 {
                     MessageBox.Show("Nie udało się otworzyć pliku: " + openFileDialog.FileName);
                 }

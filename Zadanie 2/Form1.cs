@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -35,32 +36,76 @@ namespace Zadanie_2
 
                     int rowCount = xlRange.Rows.Count;
                     int colCount = xlRange.Columns.Count;
-                    //string[] headers = { "Nazwa", "ID", "Cena", "Pozycja", "Poziom", "Opis", "Nr Zamówienia" };
+
                     List<string> headers = new List<string>() { "Nazwa", "ID", "Cena", "Pozycja", "Poziom", "Opis", "Nr Zamówienia" };
+                    Dictionary<string, int> headersPos = new Dictionary<string, int>();
+                    headersPos = headers.ToDictionary(x => x, x => -1);
                     List<string> line=new List<string>();
-                    var headersOrder = new List<(int Index, string Name)>();
                     for (int i = 1; i <= rowCount; i++)
                     {
                         line.Clear();
                         for (int j = 1; j <= colCount; j++)
                         {
                             if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
+                            {
                                 line.Add(xlRange.Cells[i, j].Value2.ToString().Trim());
+                                Console.WriteLine(i.ToString()+" "+j.ToString());
+                            }
                         }
                         bool headersLine = !headers.Except(line).Any();
+                        //trzeba sie wrocic i uzupelnic o daty i zapamietac ich indeksy
                         Console.WriteLine(headersLine);
                         if (headersLine) //trzeba teraz stworzy strukutre na podstawie lini ktora jest headerem ->line
                         {
+                            //uzupelniam o indeksy znajome pola
                             for (int k = 0; k < headers.Count; k++)
                             {
-                                int index = line.FindIndex(x => x.StartsWith(headers[k]));
-                                headersOrder.Add((index,headers[k]));
-                                //Console.WriteLine(index);
+                                headersPos[headers[k]]= line.FindIndex(x => x.StartsWith(headers[k]));
                             }
-                            for (int k = 0; k < headersOrder.Count; k++)
+                            //dodaje daty do naglowkow
+                            for (int k = 0; k < line.Count; k++)
                             {
-                                Console.WriteLine(headersOrder[k].Index.ToString() + " " +headersOrder[k].Name);
+
+                                string[] dates = line[k].Split('-');
+                                for (int l = 0; l < dates.Length; l++)
+                                {
+                                    dates[l] = dates[l].Replace('.', '/');
+                                }
+                                if (dates.Length == 2)
+                                {
+                                    try
+                                    {
+                                        DateTime dtBegin = DateTime.ParseExact(dates[0], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                                        DateTime dtEnd = DateTime.ParseExact(dates[1], "dd/MM/yyyy", CultureInfo.InvariantCulture);
+                                        Console.WriteLine(k.ToString());
+                                        Console.WriteLine(dtBegin.ToString());
+                                        Console.WriteLine(dtEnd.ToString());
+                                    }
+                                    catch (Exception)
+                                    {
+                                    }
+                                }
+                                
                             }
+                            
+
+                            //for (int k = 0; k < headers.Count; k++)
+                            //{
+                            //    int index = line.FindIndex(x => x.StartsWith(headers[k]));
+                            //    //dd.MM.rrrr-dd.MM.rrrr
+                            //    string format = "dd.MM.rrrr";
+                            //    DateTime dateTime;
+                            //    if (DateTime.TryParseExact(line[index], format, CultureInfo.InvariantCulture,
+                            //        DateTimeStyles.None, out dateTime))
+                            //    {
+                            //        Console.WriteLine(dateTime);
+                            //    }
+                            //    else
+                            //    {
+                            //        Console.WriteLine("Not a date");
+                            //    }
+                            //}
+
                         }
                         textBoxXlsxOutput.AppendText(String.Join(" ", line.Where(s => !String.IsNullOrEmpty(s))));
                         textBoxXlsxOutput.AppendText("\n");

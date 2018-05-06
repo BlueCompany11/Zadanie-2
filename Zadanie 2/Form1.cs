@@ -40,7 +40,10 @@ namespace Zadanie_2
                     List<string> headers = new List<string>() { "Nazwa", "ID", "Cena", "Pozycja", "Poziom", "Opis", "Nr Zamówienia" };
                     Dictionary<string, int> headersPos = new Dictionary<string, int>();
                     headersPos = headers.ToDictionary(x => x, x => -1);
+                    //dodaje miejsce dla listy dat
+                    List<string> datesInHedaers = new List<string>();
                     List<string> line=new List<string>();
+                    bool foundHeaders = false;
                     for (int i = 1; i <= rowCount; i++)
                     {
                         line.Clear();
@@ -49,7 +52,6 @@ namespace Zadanie_2
                             if (xlRange.Cells[i, j] != null && xlRange.Cells[i, j].Value2 != null)
                             {
                                 line.Add(xlRange.Cells[i, j].Value2.ToString().Trim());
-                                Console.WriteLine(i.ToString()+" "+j.ToString());
                             }
                         }
                         bool headersLine = !headers.Except(line).Any();
@@ -57,6 +59,7 @@ namespace Zadanie_2
                         Console.WriteLine(headersLine);
                         if (headersLine) //trzeba teraz stworzy strukutre na podstawie lini ktora jest headerem ->line
                         {
+                            foundHeaders = true;
                             //uzupelniam o indeksy znajome pola
                             for (int k = 0; k < headers.Count; k++)
                             {
@@ -65,50 +68,30 @@ namespace Zadanie_2
                             //dodaje daty do naglowkow
                             for (int k = 0; k < line.Count; k++)
                             {
-
                                 string[] dates = line[k].Split('-');
-                                for (int l = 0; l < dates.Length; l++)
-                                {
-                                    dates[l] = dates[l].Replace('.', '/');
-                                }
                                 if (dates.Length == 2)
                                 {
                                     try
                                     {
-                                        DateTime dtBegin = DateTime.ParseExact(dates[0], "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                                        DateTime dtEnd = DateTime.ParseExact(dates[1], "dd/MM/yyyy", CultureInfo.InvariantCulture);
-                                        Console.WriteLine(k.ToString());
-                                        Console.WriteLine(dtBegin.ToString());
-                                        Console.WriteLine(dtEnd.ToString());
+                                        DateTime dtBegin = DateTime.ParseExact(dates[0], "dd.MM.yyyy", CultureInfo.InvariantCulture);
+                                        DateTime dtEnd = DateTime.ParseExact(dates[1], "dd.MM.yyyy", CultureInfo.InvariantCulture);
+                                        int days = (dtEnd - dtBegin).Days + 1;
+                                        datesInHedaers.Add(line[k]);
                                     }
-                                    catch (Exception)
-                                    {
-                                    }
+                                    catch (Exception){ }
                                 }
                                 
                             }
-                            
-
-                            //for (int k = 0; k < headers.Count; k++)
-                            //{
-                            //    int index = line.FindIndex(x => x.StartsWith(headers[k]));
-                            //    //dd.MM.rrrr-dd.MM.rrrr
-                            //    string format = "dd.MM.rrrr";
-                            //    DateTime dateTime;
-                            //    if (DateTime.TryParseExact(line[index], format, CultureInfo.InvariantCulture,
-                            //        DateTimeStyles.None, out dateTime))
-                            //    {
-                            //        Console.WriteLine(dateTime);
-                            //    }
-                            //    else
-                            //    {
-                            //        Console.WriteLine("Not a date");
-                            //    }
-                            //}
-
                         }
-                        textBoxXlsxOutput.AppendText(String.Join(" ", line.Where(s => !String.IsNullOrEmpty(s))));
-                        textBoxXlsxOutput.AppendText("\n");
+                        if (foundHeaders)
+                        {
+                            textBoxXlsxOutput.AppendText(String.Join(" ", line.Where(s => !String.IsNullOrEmpty(s))));
+                            textBoxXlsxOutput.AppendText("\n");
+                            if (line.Count == 0)
+                            {
+                                break;
+                            }
+                        }
                     }
 
                     //cleanup

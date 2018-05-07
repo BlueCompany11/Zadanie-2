@@ -159,7 +159,8 @@ namespace Zadanie_2
                                     //Console.WriteLine(headersPositions[datesInHedaers[j]]);
                                     string x = line[headersPositions[datesInHedaers[j]]];
                                     //Console.WriteLine(x);
-                                    if (!String.IsNullOrEmpty(x)) //zamienic na algorytm do sprawdzania czy zapisac date
+                                    //if (!String.IsNullOrEmpty(x)) //zamienic na algorytm do sprawdzania czy zapisac date
+                                    if (x =="x")
                                         excelObject.Daty.Add(datesInHedaers[j]);
                                 }
                                 catch (Exception) { }

@@ -44,8 +44,14 @@ namespace Zadanie_2
                 var excelObjects = await Task.Run(() => CreateObjectsFromExcel(lastPickedFilePath, sheetNumber));
                 foreach (var item in excelObjects)
                 {
-                    textBoxXlsxOutput.AppendText(item.ToString());
-                    textBoxXlsxOutput.AppendText("\n");
+                    try
+                    {
+                        textBoxXlsxOutput.AppendText("Wynik dla obiektu "+item.Nazwa+" to "+ item.TaskCount()+"\n".ToString());
+                    }
+                    catch (Exception)
+                    {
+                        textBoxXlsxOutput.AppendText("Niepoprawna wartosc ceny: "+item.Cena + "\n");
+                    }
                 }
             }
         }

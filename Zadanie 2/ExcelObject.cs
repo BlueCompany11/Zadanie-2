@@ -58,6 +58,21 @@ namespace Zadanie_2
             get; set;
         }
 
+        public double TaskCount()
+        {
+            double ret = 0;
+            int days = 0;
+            for (int i = 0; i < Daty.Count; i++)
+            {
+                string[] dates = Daty[i].Split('-');
+                DateTime dtBegin = DateTime.ParseExact(dates[0], "dd.MM.yyyy", CultureInfo.InvariantCulture);
+                DateTime dtEnd = DateTime.ParseExact(dates[1], "dd.MM.yyyy", CultureInfo.InvariantCulture);
+                days += (dtEnd - dtBegin).Days + 1;
+            }
+            ret = Int32.Parse(Cena) / days;
+            return ret;
+        }
+
         private static Tuple<List<string>, List<string>, Dictionary<string, int>> FindDatesInHeaders(
             List<string> line, List<string> datesInHedaers, Dictionary<string, int> headersPositions)
         {

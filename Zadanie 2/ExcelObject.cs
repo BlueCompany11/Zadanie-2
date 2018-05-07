@@ -11,6 +11,7 @@ namespace Zadanie_2
 {
     public class ExcelObject
     {
+        public static List<string> acceptedValuesInDates = new List<string>() { "x" };
         public static List<string> headers = new List<string>() { "Nazwa", "ID", "Cena", "Pozycja", "Poziom", "Opis", "Nr Zamówienia" };
         string nazwa;
         string id;
@@ -155,12 +156,8 @@ namespace Zadanie_2
                             {
                                 try
                                 {
-                                    //Console.WriteLine(datesInHedaers[j]);
-                                    //Console.WriteLine(headersPositions[datesInHedaers[j]]);
-                                    string x = line[headersPositions[datesInHedaers[j]]];
-                                    //Console.WriteLine(x);
-                                    //if (!String.IsNullOrEmpty(x)) //zamienic na algorytm do sprawdzania czy zapisac date
-                                    if (x =="x")
+                                    string valueDateheader = line[headersPositions[datesInHedaers[j]]];
+                                    if (acceptedValuesInDates.Contains(valueDateheader))
                                         excelObject.Daty.Add(datesInHedaers[j]);
                                 }
                                 catch (Exception) { }

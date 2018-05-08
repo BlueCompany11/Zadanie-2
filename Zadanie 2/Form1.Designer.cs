@@ -34,10 +34,11 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.buttonGetFilePath = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.textBoxXlsxOutput = new System.Windows.Forms.TextBox();
             this.comboBoxSheetNumber = new System.Windows.Forms.ComboBox();
             this.buttonMakeSummary = new System.Windows.Forms.Button();
+            this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.textBoxXlsxOutput = new System.Windows.Forms.TextBox();
+            this.buttonChangeSettings = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
@@ -82,11 +83,13 @@
             this.tableLayoutPanel3.Controls.Add(this.buttonGetFilePath, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.label1, 0, 1);
             this.tableLayoutPanel3.Controls.Add(this.comboBoxSheetNumber, 0, 2);
-            this.tableLayoutPanel3.Controls.Add(this.buttonMakeSummary, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.buttonChangeSettings, 0, 3);
+            this.tableLayoutPanel3.Controls.Add(this.buttonMakeSummary, 0, 4);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
-            this.tableLayoutPanel3.RowCount = 4;
+            this.tableLayoutPanel3.RowCount = 5;
+            this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -115,6 +118,26 @@
             this.label1.TabIndex = 2;
             this.label1.Text = "Numer arkusza";
             // 
+            // comboBoxSheetNumber
+            // 
+            this.comboBoxSheetNumber.FormattingEnabled = true;
+            this.comboBoxSheetNumber.Location = new System.Drawing.Point(3, 45);
+            this.comboBoxSheetNumber.Name = "comboBoxSheetNumber";
+            this.comboBoxSheetNumber.Size = new System.Drawing.Size(106, 21);
+            this.comboBoxSheetNumber.TabIndex = 3;
+            this.comboBoxSheetNumber.Text = "Wybierz numer arkusza";
+            // 
+            // buttonMakeSummary
+            // 
+            this.buttonMakeSummary.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.buttonMakeSummary.Location = new System.Drawing.Point(3, 339);
+            this.buttonMakeSummary.Name = "buttonMakeSummary";
+            this.buttonMakeSummary.Size = new System.Drawing.Size(106, 23);
+            this.buttonMakeSummary.TabIndex = 4;
+            this.buttonMakeSummary.Text = "Podsumuj";
+            this.buttonMakeSummary.UseVisualStyleBackColor = true;
+            this.buttonMakeSummary.Click += new System.EventHandler(this.buttonMakeSummary_Click);
+            // 
             // tableLayoutPanel4
             // 
             this.tableLayoutPanel4.ColumnCount = 1;
@@ -137,25 +160,16 @@
             this.textBoxXlsxOutput.Size = new System.Drawing.Size(659, 359);
             this.textBoxXlsxOutput.TabIndex = 0;
             // 
-            // comboBoxSheetNumber
+            // buttonChangeSettings
             // 
-            this.comboBoxSheetNumber.FormattingEnabled = true;
-            this.comboBoxSheetNumber.Location = new System.Drawing.Point(3, 45);
-            this.comboBoxSheetNumber.Name = "comboBoxSheetNumber";
-            this.comboBoxSheetNumber.Size = new System.Drawing.Size(106, 21);
-            this.comboBoxSheetNumber.TabIndex = 3;
-            this.comboBoxSheetNumber.Text = "Wybierz numer arkusza";
-            // 
-            // buttonMakeSummary
-            // 
-            this.buttonMakeSummary.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.buttonMakeSummary.Location = new System.Drawing.Point(3, 339);
-            this.buttonMakeSummary.Name = "buttonMakeSummary";
-            this.buttonMakeSummary.Size = new System.Drawing.Size(106, 23);
-            this.buttonMakeSummary.TabIndex = 4;
-            this.buttonMakeSummary.Text = "Podsumuj";
-            this.buttonMakeSummary.UseVisualStyleBackColor = true;
-            this.buttonMakeSummary.Click += new System.EventHandler(this.buttonMakeSummary_Click);
+            this.buttonChangeSettings.Dock = System.Windows.Forms.DockStyle.Top;
+            this.buttonChangeSettings.Location = new System.Drawing.Point(3, 72);
+            this.buttonChangeSettings.Name = "buttonChangeSettings";
+            this.buttonChangeSettings.Size = new System.Drawing.Size(106, 23);
+            this.buttonChangeSettings.TabIndex = 5;
+            this.buttonChangeSettings.Text = "Zmień ustawienia";
+            this.buttonChangeSettings.UseVisualStyleBackColor = true;
+            this.buttonChangeSettings.Click += new System.EventHandler(this.buttonChangeSettings_Click);
             // 
             // Form1
             // 
@@ -189,6 +203,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBoxSheetNumber;
         private System.Windows.Forms.Button buttonMakeSummary;
+        private System.Windows.Forms.Button buttonChangeSettings;
     }
 }
 

@@ -33,7 +33,7 @@ namespace Zadanie_2
             int sheetNumber = -1;
             try
             {
-                sheetNumber = Int32.Parse(comboBoxSheetNumber.SelectedItem.ToString());
+                sheetNumber = Int32.Parse(comboBoxSheetNumber.SelectedItem.ToString().Split('.')[0]);
             }
             catch (Exception)
             {
@@ -75,7 +75,7 @@ namespace Zadanie_2
                 var sheetNumbers =  await Task.Run(() => XlsxReader.GetSheetNumbers(lastPickedFilePath));
                 for (int i = 0; i < sheetNumbers.Count; i++)
                 {
-                    comboBoxSheetNumber.Items.Add(sheetNumbers[i]);
+                    comboBoxSheetNumber.Items.Add(sheetNumbers[i].Item1+". "+sheetNumbers[i].Item2);
                 }
             }
         }

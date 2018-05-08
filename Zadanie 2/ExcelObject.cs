@@ -85,7 +85,6 @@ namespace Zadanie_2
                     {
                         DateTime dtBegin = DateTime.ParseExact(dates[0], "dd.MM.yyyy", CultureInfo.InvariantCulture);
                         DateTime dtEnd = DateTime.ParseExact(dates[1], "dd.MM.yyyy", CultureInfo.InvariantCulture);
-                        //int days = (dtEnd - dtBegin).Days + 1;
                         datesInHedaers.Add(line[k]);
                         for (int l = 0; l < datesInHedaers.Count; l++)
                         {

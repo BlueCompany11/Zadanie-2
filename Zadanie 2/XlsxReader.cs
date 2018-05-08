@@ -10,15 +10,16 @@ namespace Zadanie_2
 {
     public static class XlsxReader
     {
-        public static List<int> GetSheetNumbers(string filePath)
+        public static List<Tuple<int,string>> GetSheetNumbers(string filePath)
         {
             Excel.Application xlApp = new Excel.Application();
             Excel.Workbook xlWorkbook = xlApp.Workbooks.Open(filePath);
-
-            List<int> sheetNumbers = new List<int>();
-            for (int i = 0; i < xlWorkbook.Sheets.Count; i++)
+            //var asd = xlWorkbook.Sheets.Item[xlWorkbook.Sheets.Count].Name;
+            List<Tuple<int, string>> sheetNumbers = new List<Tuple<int, string>> { };       
+            for (int i = 1; i <= xlWorkbook.Sheets.Count; i++)
             {
-                sheetNumbers.Add(i + 1);
+
+                sheetNumbers.Add(new Tuple<int, string>(i, xlWorkbook.Sheets.Item[i].Name));
             }
 
             GC.Collect();

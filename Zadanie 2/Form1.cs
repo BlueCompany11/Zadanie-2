@@ -89,7 +89,8 @@ namespace Zadanie_2
                 list.Add(item);
                 Console.WriteLine(item);
             }
-
+            ChangeSettingsForm changeSettingsForm = new ChangeSettingsForm();
+            changeSettingsForm.Show();
 
             //Properties.Settings.Default.Save(); // Saves settings in application configuration file
             Console.WriteLine("juz");

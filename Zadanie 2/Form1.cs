@@ -16,17 +16,17 @@ namespace Zadanie_2
 {
     public partial class Form1 : Form
     {
-        private string lastPickedFilePath;
+        private XlsxObject xlsxObject;
         public Form1()
         {
             InitializeComponent();
         }
 
-        private async Task<List<ExcelObject>> CreateObjectsFromExcel(string filePath,int sheetNumber)
-        {
-            List<ExcelObject> rowsAsObjects = await ExcelObject.CreateObjectsFromExcel(ExcelObject.headers,filePath, sheetNumber);
-            return rowsAsObjects;
-        }
+        //private async Task<List<XlsxSheetObject>> CreateObjectsFromExcel(string filePath,int sheetNumber)
+        //{
+        //    List<XlsxSheetObject> rowsAsObjects = await xlsxObject.CreateObjectsFromExcel(XlsxSheetObject.headers,filePath, sheetNumber);
+        //    return rowsAsObjects;
+        //}
 
         private async void buttonMakeSummary_Click(object sender, EventArgs e)
         {
@@ -39,21 +39,29 @@ namespace Zadanie_2
             {
                 MessageBox.Show("Wybierz plik, a pozniej numer arkusza");
             }
-            if (!String.IsNullOrEmpty(lastPickedFilePath))
+            var headers = Properties.Settings.Default.ConstHeaders.Cast<string>().ToList();
+            var dateFields = Properties.Settings.Default.AcceptableDateFieldValue.Cast<string>().ToList();
+            try
             {
-                var excelObjects = await Task.Run(() => CreateObjectsFromExcel(lastPickedFilePath, sheetNumber));
-                foreach (var item in excelObjects)
+                xlsxObject.OpenSheet(sheetNumber, headers, dateFields);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            var generatedObjects = await Task.Run(() => xlsxObject.GenerateObjects());
+            foreach (var item in generatedObjects)
+            {
+                try
                 {
-                    try
-                    {
-                        textBoxXlsxOutput.AppendText("Wynik dla obiektu "+item.Nazwa+" to "+ item.TaskCount()+"\n".ToString());
-                    }
-                    catch (Exception)
-                    {
-                        textBoxXlsxOutput.AppendText("Niepoprawna wartosc ceny: "+item.Cena + "\n");
-                    }
+                    textBoxXlsxOutput.AppendText("Wynik dla obiektu " + item.Nazwa + " to " + item.TaskCount() + "\n".ToString());
+                }
+                catch (Exception)
+                {
+                    textBoxXlsxOutput.AppendText("Niepoprawna wartosc ceny: " + item.Cena + "\n");
                 }
             }
+            
         }
 
         private string GetFilePath()
@@ -69,10 +77,12 @@ namespace Zadanie_2
 
         private async void buttonGetFile_Click(object sender, EventArgs e)
         {
-            lastPickedFilePath = GetFilePath();
-            if (!String.IsNullOrEmpty(lastPickedFilePath))
+            string pickedFilePath = GetFilePath();
+            if (!String.IsNullOrEmpty(pickedFilePath))
             {
-                var sheetNumbers =  await Task.Run(() => XlsxReader.GetSheetNumbers(lastPickedFilePath));
+                comboBoxSheetNumber.Items.Clear();
+                xlsxObject = new XlsxObject(pickedFilePath);
+                var sheetNumbers = await Task.Run(() => xlsxObject.GetSheetNumbers());
                 for (int i = 0; i < sheetNumbers.Count; i++)
                 {
                     comboBoxSheetNumber.Items.Add(sheetNumbers[i].Item1+". "+sheetNumbers[i].Item2);

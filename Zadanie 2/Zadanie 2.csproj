@@ -52,7 +52,6 @@
     <Compile Include="ChangeSettingsForm.Designer.cs">
       <DependentUpon>ChangeSettingsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ExcelObject.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,7 +60,8 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="XlsxReader.cs" />
+    <Compile Include="XlsxSheetObject.cs" />
+    <Compile Include="XlsxObject.cs" />
     <EmbeddedResource Include="ChangeSettingsForm.resx">
       <DependentUpon>ChangeSettingsForm.cs</DependentUpon>
     </EmbeddedResource>

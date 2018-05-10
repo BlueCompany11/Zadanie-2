@@ -36,5 +36,26 @@ namespace Zadanie_2.Properties {
                 this["AcceptableDateFieldValue"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute(@"<?xml version=""1.0"" encoding=""utf-16""?>
+<ArrayOfString xmlns:xsi=""http://www.w3.org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">
+  <string>Nazwa</string>
+  <string>ID</string>
+  <string>Cena</string>
+  <string>Pozycja</string>
+  <string>Poziom</string>
+  <string>Opis</string>
+  <string>Nr Zamówienia</string>
+</ArrayOfString>")]
+        public global::System.Collections.Specialized.StringCollection ConstHeaders {
+            get {
+                return ((global::System.Collections.Specialized.StringCollection)(this["ConstHeaders"]));
+            }
+            set {
+                this["ConstHeaders"] = value;
+            }
+        }
     }
 }

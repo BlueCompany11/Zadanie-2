@@ -8,5 +8,17 @@
   &lt;string&gt;x&lt;/string&gt;
 &lt;/ArrayOfString&gt;</Value>
     </Setting>
+    <Setting Name="ConstHeaders" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;ArrayOfString xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;string&gt;Nazwa&lt;/string&gt;
+  &lt;string&gt;ID&lt;/string&gt;
+  &lt;string&gt;Cena&lt;/string&gt;
+  &lt;string&gt;Pozycja&lt;/string&gt;
+  &lt;string&gt;Poziom&lt;/string&gt;
+  &lt;string&gt;Opis&lt;/string&gt;
+  &lt;string&gt;Nr Zamówienia&lt;/string&gt;
+&lt;/ArrayOfString&gt;</Value>
+    </Setting>
   </Settings>
 </SettingsFile>

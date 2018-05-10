@@ -82,18 +82,8 @@ namespace Zadanie_2
 
         private void buttonChangeSettings_Click(object sender, EventArgs e)
         {
-            var x=Properties.Settings.Default.AcceptableDateFieldValue;
-            List<string> list = new List<string>();
-            foreach (string item in x)
-            {
-                list.Add(item);
-                Console.WriteLine(item);
-            }
             ChangeSettingsForm changeSettingsForm = new ChangeSettingsForm();
             changeSettingsForm.Show();
-
-            //Properties.Settings.Default.Save(); // Saves settings in application configuration file
-            Console.WriteLine("juz");
         }
     }
 }

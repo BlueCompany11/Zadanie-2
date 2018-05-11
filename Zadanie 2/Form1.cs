@@ -22,12 +22,6 @@ namespace Zadanie_2
             InitializeComponent();
         }
 
-        //private async Task<List<XlsxSheetObject>> CreateObjectsFromExcel(string filePath,int sheetNumber)
-        //{
-        //    List<XlsxSheetObject> rowsAsObjects = await xlsxObject.CreateObjectsFromExcel(XlsxSheetObject.headers,filePath, sheetNumber);
-        //    return rowsAsObjects;
-        //}
-
         private async void buttonMakeSummary_Click(object sender, EventArgs e)
         {
             int sheetNumber = -1;
@@ -54,7 +48,16 @@ namespace Zadanie_2
             {
                 try
                 {
-                    textBoxXlsxOutput.AppendText("Wynik dla obiektu " + item.Nazwa + " to " + item.TaskCount() + "\n".ToString());
+                    double costValue = item.TaskCount();
+                    if (costValue == -1)
+                    {
+                        textBoxXlsxOutput.AppendText("Ilość dni emisji dla obiektu " + item.Nazwa + " wynosi 0." + "\n");
+                    }
+                    else
+                    {
+                        textBoxXlsxOutput.AppendText("Wynik dla obiektu " + item.Nazwa + " to " + item.TaskCount() + "\n");
+                    }
+                    
                 }
                 catch (Exception)
                 {
@@ -81,7 +84,8 @@ namespace Zadanie_2
             if (!String.IsNullOrEmpty(pickedFilePath))
             {
                 comboBoxSheetNumber.Items.Clear();
-                xlsxObject = new XlsxObject(pickedFilePath);
+                var task = await Task.Run(() => xlsxObject = new XlsxObject(pickedFilePath));
+                //xlsxObject = new XlsxObject(pickedFilePath);
                 var sheetNumbers = await Task.Run(() => xlsxObject.GetSheetNumbers());
                 for (int i = 0; i < sheetNumbers.Count; i++)
                 {

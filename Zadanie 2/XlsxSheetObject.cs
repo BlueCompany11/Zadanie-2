@@ -66,6 +66,10 @@ namespace Zadanie_2
                 DateTime dtEnd = DateTime.ParseExact(dates[1], "dd.MM.yyyy", CultureInfo.InvariantCulture);
                 days += (dtEnd - dtBegin).Days + 1;
             }
+            if (days == 0)
+            {
+                return -1;
+            }
             ret = Int32.Parse(Cena) / days;
             return ret;
         }
